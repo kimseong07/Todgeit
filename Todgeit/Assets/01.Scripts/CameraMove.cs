@@ -9,6 +9,9 @@ public class CameraMove : MonoBehaviour
     //[SerializeField]
     //private Transform cameraArm;
 
+    public GameObject camY;
+    public GameObject camZ;
+
     void Start()
     {
         
@@ -17,11 +20,29 @@ public class CameraMove : MonoBehaviour
     void Update()
     {
         //LookAround();
+        ChangeCam();
     }
 
     void ChangeCam()
     {
+        if(Input.GetKey(KeyCode.K))
+        {
+            camY.SetActive(true);
+        }
+        else
+        {
+            camY.SetActive(false);
+        }
 
+        if(Input.GetKeyDown(KeyCode.Alpha1))
+        {
+            camZ.SetActive(false);
+        }
+
+        if (Input.GetKeyDown(KeyCode.Alpha2))
+        {
+            camZ.SetActive(true);
+        }
     }
 
     //private void LookAround()
