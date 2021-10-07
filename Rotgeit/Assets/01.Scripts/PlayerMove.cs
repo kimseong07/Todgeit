@@ -4,10 +4,12 @@ using UnityEngine;
 
 public class PlayerMove : MonoBehaviour
 {
+    private GamaManager gamaManager;
+
     Rigidbody2D rigid;
     public float jumpPower = 1f;
-    [SerializeField]
-    private int jumpCount = 0;
+
+    public int jumpCount = 0;
 
     public float forcePower = 10f;
 
@@ -15,12 +17,12 @@ public class PlayerMove : MonoBehaviour
 
     public float slowPower = 1.2f;
 
-    bool gameStart = false;
-    public bool gameOver = false;
+
     
     void Start()
     {
-        gameOver = false;
+        gamaManager = FindObjectOfType<GamaManager>();
+
 
         rigid = GetComponent<Rigidbody2D>();
 
@@ -29,22 +31,26 @@ public class PlayerMove : MonoBehaviour
     }
     void Update()
     {
-        if(gameStart)
+        if(gamaManager.gameStart)
         {
             rigid.gravityScale = 1;
         }
 
-        if (Input.GetKeyDown(KeyCode.W))
-        {
-            Jump();
-        }
 
-        Move();
+
+        if (!gamaManager.gameOver)
+        {
+            if (Input.GetKeyDown(KeyCode.W))
+            {
+                Jump();
+            }
+            Move();
+        }
     }
 
     void Jump()
     {
-        gameStart = true;
+        gamaManager.gameStart = true;
 
         Vector3 jumpVelo = new Vector3( 0 , jumpPower);
 
@@ -57,12 +63,12 @@ public class PlayerMove : MonoBehaviour
     {
         if (Input.GetKey(KeyCode.A))
         {
-            gameStart = true;
+            gamaManager.gameStart = true;
             rigid.AddForce(Vector2.left * forcePower);
         }
         else if (Input.GetKey(KeyCode.D))
         {
-            gameStart = true;
+            gamaManager.gameStart = true;
             rigid.AddForce(Vector2.right * forcePower);
         }
 
@@ -87,8 +93,11 @@ public class PlayerMove : MonoBehaviour
     {
         if(collision.gameObject.tag == "Obstacle")
         {
-            gameOver = true;
-            gameStart = false;
+            gamaManager.gameOver = true;
+            gamaManager.gameStart = false;
+
+            rigid.velocity = Vector2.zero;
+            rigid.gravityScale = 0;
         }
     }
 }

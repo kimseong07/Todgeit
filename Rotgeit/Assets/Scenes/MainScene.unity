@@ -602,7 +602,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   gameOverPanel: {fileID: 51538661}
-  pauseBtn: {fileID: 0}
+  pauseBtn: {fileID: 1544264424}
+  jumpCountText: {fileID: 1852618517}
+  gameOverJumpText: {fileID: 1865186293}
 --- !u!1 &519420028
 GameObject:
   m_ObjectHideFlags: 0
@@ -1018,7 +1020,7 @@ GameObject:
   - component: {fileID: 1544264425}
   - component: {fileID: 1544264424}
   m_Layer: 5
-  m_Name: StopBtn
+  m_Name: PauseBtn
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -1275,7 +1277,7 @@ GameObject:
   - component: {fileID: 1852618518}
   - component: {fileID: 1852618517}
   m_Layer: 5
-  m_Name: Text
+  m_Name: ScoreCount
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -1313,7 +1315,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
-  m_Color: {r: 0.19607843, g: 0.19607843, b: 0.19607843, a: 0.59607846}
+  m_Color: {r: 0, g: 0, b: 0, a: 0.4392157}
   m_RaycastTarget: 1
   m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
   m_Maskable: 1
@@ -1541,7 +1543,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   restartBtn: {fileID: 66420459}
-  pauseBtn: {fileID: 0}
 --- !u!1 &1923121207
 GameObject:
   m_ObjectHideFlags: 0

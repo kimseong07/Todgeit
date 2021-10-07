@@ -12,9 +12,16 @@ public class GamaManager : MonoBehaviour
 
     private bool restartGame;
 
+    public float score;
+
+    public bool gameStart = false;
+    public bool gameOver = false;
+
     void Start()
     {
         playerScript = FindObjectOfType<PlayerMove>();
+
+        gameOver = false;
 
         restartGame = false;
     }
@@ -27,7 +34,7 @@ public class GamaManager : MonoBehaviour
             restartGame = true;
         });
 
-        if(Input.GetKeyUp(KeyCode.R) && playerScript.gameOver)
+        if(Input.GetKeyUp(KeyCode.R) && gameOver)
         {
             restartGame = true;
         }
@@ -39,7 +46,7 @@ public class GamaManager : MonoBehaviour
     {
         if(restartGame)
         {
-            playerScript.gameOver = false;
+            gameOver = false;
             playerScript.transform.position = new Vector2(0, 0);
             playerScript.GetComponent<Rigidbody2D>().velocity = Vector2.zero;
             playerScript.GetComponent<Rigidbody2D>().gravityScale = 0;
