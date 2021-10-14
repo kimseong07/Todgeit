@@ -23,7 +23,6 @@ public class PlayerMove : MonoBehaviour
     {
         gamaManager = FindObjectOfType<GamaManager>();
 
-
         rigid = GetComponent<Rigidbody2D>();
 
         rigid.gravityScale = 0;
@@ -44,6 +43,7 @@ public class PlayerMove : MonoBehaviour
             {
                 Jump();
             }
+
             Move();
         }
     }

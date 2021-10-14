@@ -9,7 +9,6 @@ public class GamaManager : MonoBehaviour
 
     public Button restartBtn;
 
-
     private bool restartGame;
 
     public float score;
@@ -47,10 +46,13 @@ public class GamaManager : MonoBehaviour
         if(restartGame)
         {
             gameOver = false;
+
+            score = 0;
             playerScript.transform.position = new Vector2(0, 0);
             playerScript.GetComponent<Rigidbody2D>().velocity = Vector2.zero;
             playerScript.GetComponent<Rigidbody2D>().gravityScale = 0;
 
+            GameManager.instance.ResetScore();
             restartGame = false;
         }
     }

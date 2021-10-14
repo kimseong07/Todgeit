@@ -55,7 +55,7 @@ public class UIManager : MonoBehaviour
 
     void JumpCount()
     {
-        //jumpCountText.text = gamaManagerScript.jumpCount.ToString();
-        //gameOverJumpText.text = jumpCountText.text;
+        jumpCountText.text = gamaManagerScript.score.ToString();
+        gameOverJumpText.text = jumpCountText.text;
     }
 }
