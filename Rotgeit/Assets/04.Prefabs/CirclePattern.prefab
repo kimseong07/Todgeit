@@ -15,7 +15,7 @@ GameObject:
   - component: {fileID: 7474920597425621051}
   m_Layer: 0
   m_Name: CirclePattern
-  m_TagString: Obstacle
+  m_TagString: ObstaclePatterb
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -97,7 +97,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f8aa28900f7c7f8469e026159ffd271e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  speed: 1
+  speed: 4
 --- !u!50 &4685565731247878796
 Rigidbody2D:
   serializedVersion: 4

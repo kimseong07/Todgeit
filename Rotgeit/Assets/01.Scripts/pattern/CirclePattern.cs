@@ -4,7 +4,6 @@ using UnityEngine;
 
 public class CirclePattern : MonoBehaviour
 {
-    GameManager gameManager;
     public float speed = 0f;
 
     private void Start()
@@ -24,14 +23,21 @@ public class CirclePattern : MonoBehaviour
         //    transform.Translate(Vector2.right * speed);
         //}
 
-        StartCoroutine(EndLife());
-
-        transform.Translate(Vector2.left * (speed / 100));
+        transform.Translate(Vector2.right * (speed / 100));
     }
 
-   IEnumerator EndLife()
+    public void SetPos(Vector3 pos, float angle = 0f)
     {
-        yield return new WaitForSeconds(5f);
-        GameManager.instance.ResetCircle();
+        transform.position = pos;
+        transform.rotation = Quaternion.AngleAxis(angle, Vector3.forward);
+    }
+
+    private void OnTriggerEnter2D(Collider2D other)
+    {
+        if(other.gameObject.tag == "Obstacle")
+        {
+            this.gameObject.SetActive(false);
+            GameManager.instance.circleCount--;
+        }
     }
 }

@@ -9,6 +9,11 @@ public class GameManager : MonoBehaviour
 
     public static GameManager instance;
 
+    public float startTime;
+    public float curtime;
+
+    public GameObject spawnPoint;
+
     [Header ("score")]
     public GameObject scorePrefab;
     public float createTime = 5.0f;
@@ -29,6 +34,8 @@ public class GameManager : MonoBehaviour
 
     private WaitForSeconds wsSpawn;
     private WaitForSeconds ciSpawn;
+
+    public Transform player;
 
     void Awake()
     {
@@ -53,7 +60,7 @@ public class GameManager : MonoBehaviour
             e.SetActive(false);
             CirclePattern eh = e.GetComponent<CirclePattern>();
             circlePatternList.Add(eh);
-        }
+        } 
         ciSpawn = new WaitForSeconds(createCircleTime);
 
         gamaManager = GetComponent<GamaManager>();
@@ -68,6 +75,12 @@ public class GameManager : MonoBehaviour
     {
         circlePatternList.ForEach(x => x.gameObject.SetActive(false));
         circleCount = 0;
+    }
+
+    public void StartCor()
+    {
+        StartCoroutine(SpawnScore());
+        StartCoroutine(SpawnCircle());
     }
 
     public GameObject CreateScore()
@@ -89,15 +102,25 @@ public class GameManager : MonoBehaviour
     }
     private void Start()
     {
-        //StartCoroutine(SpawnEnemy());
+        //StartCoroutine(SpawnCircle());
+        //StartCoroutine(SpawnScore());
+    }
+
+    private void FixedUpdate()
+    {
+        if (gamaManager.gameStart)
+        {
+            startTime = startTime - Time.deltaTime;
+        }
+        
     }
 
     private void Update()
     {
-        if(gamaManager.gameStart)
+        if (startTime <= 0)
         {
-            StartCoroutine(SpawnScore());
-            StartCoroutine(SpawnCircle());
+            StartCor();
+            startTime = curtime;
         }
     }
 
@@ -107,6 +130,7 @@ public class GameManager : MonoBehaviour
         {
             if (scoreCount < maxScoreObj)
             {
+
                 ScoreScript eh = scoreList.Find( x => !x.gameObject.activeSelf);
                 // activieSelf, activeInHeirachy
                 if (eh == null)
@@ -125,6 +149,7 @@ public class GameManager : MonoBehaviour
                 eh.gameObject.SetActive(true);
             }
             yield return wsSpawn;
+
         }
     }
 
@@ -147,11 +172,12 @@ public class GameManager : MonoBehaviour
 
                 float randy = UnityEngine.Random.Range(-maxScoreY, maxScoreY);
 
-                eh.transform.position = new Vector2(9, randy);
+                //Vector3 dir = player.transform.position - eh.transform.position;
+                eh.SetPos(new Vector2(spawnPoint.transform.position.x, randy), 180);
+
                 eh.gameObject.SetActive(true);
-
-
             }
+
             yield return ciSpawn;
         }
     }

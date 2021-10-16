@@ -7,6 +7,8 @@ public class GamaManager : MonoBehaviour
 {
     private PlayerMove playerScript;
 
+    public GameObject backGround;
+
     public Button restartBtn;
 
     private bool restartGame;
@@ -16,6 +18,9 @@ public class GamaManager : MonoBehaviour
     public bool gameStart = false;
     public bool gameOver = false;
 
+    public float curResDelay;
+    private float resDelay;
+
     void Start()
     {
         playerScript = FindObjectOfType<PlayerMove>();
@@ -23,22 +28,36 @@ public class GamaManager : MonoBehaviour
         gameOver = false;
 
         restartGame = false;
+
+        backGround.transform.localScale = new Vector3((Camera.main.orthographicSize * 2) / Screen.height * Screen.width, Camera.main.orthographicSize * 2);
     }
 
-    // Update is called once per frame
+    private void FixedUpdate()
+    {
+        if(gameOver)
+        {
+            resDelay = resDelay - Time.deltaTime;
+        }
+    }
     void Update()
     {
-        restartBtn.onClick.AddListener(() =>
+        if (resDelay <= 0)
         {
-            restartGame = true;
-        });
+            restartBtn.onClick.AddListener(() =>
+                {
+                    restartGame = true;
+                    resDelay = curResDelay;
+                });
 
-        if(Input.GetKeyUp(KeyCode.R) && gameOver)
-        {
-            restartGame = true;
+            if (Input.GetKeyUp(KeyCode.R) && gameOver)
+            {
+                restartGame = true;
+                resDelay = curResDelay;
+            }
         }
-
         RestartPlayerState();
+
+       
     }
 
     void RestartPlayerState()
@@ -53,6 +72,7 @@ public class GamaManager : MonoBehaviour
             playerScript.GetComponent<Rigidbody2D>().gravityScale = 0;
 
             GameManager.instance.ResetScore();
+            GameManager.instance.ResetCircle();
             restartGame = false;
         }
     }

@@ -18,7 +18,7 @@ public class PlayerMove : MonoBehaviour
     public float slowPower = 1.2f;
 
 
-    
+
     void Start()
     {
         gamaManager = FindObjectOfType<GamaManager>();
@@ -30,7 +30,7 @@ public class PlayerMove : MonoBehaviour
     }
     void Update()
     {
-        if(gamaManager.gameStart)
+        if (gamaManager.gameStart)
         {
             rigid.gravityScale = 1;
         }
@@ -39,9 +39,11 @@ public class PlayerMove : MonoBehaviour
 
         if (!gamaManager.gameOver)
         {
-            if (Input.GetKeyDown(KeyCode.W))
+            if (Input.GetKeyDown(KeyCode.W) || Input.GetKeyDown(KeyCode.Space))
             {
                 Jump();
+
+                //GameManager.instance.StartCor();
             }
 
             Move();
@@ -52,8 +54,7 @@ public class PlayerMove : MonoBehaviour
     {
         gamaManager.gameStart = true;
 
-        Vector3 jumpVelo = new Vector3( 0 , jumpPower);
-
+        Vector3 jumpVelo = new Vector3(0, jumpPower);
         rigid.AddForce(jumpVelo, ForceMode2D.Impulse);
 
         jumpCount++;
@@ -73,6 +74,8 @@ public class PlayerMove : MonoBehaviour
         }
 
         MaxPower();
+
+
     }
 
     void MaxPower()
@@ -91,10 +94,12 @@ public class PlayerMove : MonoBehaviour
 
     private void OnTriggerEnter2D(Collider2D collision)
     {
-        if(collision.gameObject.tag == "Obstacle")
+        if (collision.gameObject.tag == "Obstacle" || collision.gameObject.tag == "ObstaclePatterb")
         {
             gamaManager.gameOver = true;
             gamaManager.gameStart = false;
+
+            GameManager.instance.ResetCircle();
 
             rigid.velocity = Vector2.zero;
             rigid.gravityScale = 0;
