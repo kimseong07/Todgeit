@@ -74,8 +74,6 @@ public class PlayerMove : MonoBehaviour
         }
 
         MaxPower();
-
-
     }
 
     void MaxPower()
