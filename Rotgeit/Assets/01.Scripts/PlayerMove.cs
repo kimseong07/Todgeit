@@ -17,6 +17,14 @@ public class PlayerMove : MonoBehaviour
 
     public float slowPower = 1.2f;
 
+    public float mujeogTime = 0f;
+
+    private float mujeongCTime = 8f;
+    private float muejongMTime = 8f;
+
+    public bool mujeog = false;
+
+    SpriteRenderer playerSprite;
 
 
     void Start()
@@ -25,7 +33,13 @@ public class PlayerMove : MonoBehaviour
 
         rigid = GetComponent<Rigidbody2D>();
 
+        playerSprite = GetComponent<SpriteRenderer>();
+
         rigid.gravityScale = 0;
+
+        mujeongCTime = 0f;
+
+        mujeog = false;
 
     }
     void Update()
@@ -33,9 +47,18 @@ public class PlayerMove : MonoBehaviour
         if (gamaManager.gameStart)
         {
             rigid.gravityScale = 1;
+
+            if (mujeongCTime <= 0)
+            {
+                if (Input.GetKeyDown(KeyCode.LeftShift) && !mujeog)
+                {
+                    Debug.Log("asd");
+                    mujeog = true;
+                    playerSprite.color = new Color(0, 0, 0, 0.5f);
+                    StartCoroutine(Invincibility());
+                }
+            }
         }
-
-
 
         if (!gamaManager.gameOver)
         {
@@ -45,8 +68,13 @@ public class PlayerMove : MonoBehaviour
 
                 //GameManager.instance.StartCor();
             }
-
             Move();
+        }
+
+
+        if (mujeongCTime >= 0)
+        {
+            mujeongCTime = mujeongCTime - Time.deltaTime;
         }
     }
 
@@ -92,15 +120,39 @@ public class PlayerMove : MonoBehaviour
 
     private void OnTriggerEnter2D(Collider2D collision)
     {
-        if (collision.gameObject.tag == "Obstacle" || collision.gameObject.tag == "ObstaclePatterb")
+        if (collision.gameObject.tag == "Obstacle")
         {
-            gamaManager.gameOver = true;
-            gamaManager.gameStart = false;
-
-            GameManager.instance.ResetCircle();
-
-            rigid.velocity = Vector2.zero;
-            rigid.gravityScale = 0;
+            ResetGame();
         }
+
+        if (!mujeog)
+        {
+            if (collision.gameObject.tag == "ObstaclePatterb")
+            {
+                ResetGame();
+            }
+        }
+
+    }
+
+    void ResetGame()
+    {
+        gamaManager.gameOver = true;
+        gamaManager.gameStart = false;
+
+        mujeongCTime = 0f;
+        
+        //GameManager.instance.ResetCircle();
+
+        rigid.velocity = Vector2.zero;
+        rigid.gravityScale = 0;
+    }
+
+    IEnumerator Invincibility()
+    {
+        yield return new WaitForSeconds(mujeogTime);
+        mujeog = false;
+        playerSprite.color = new Color(0, 0, 0, 1);
+        mujeongCTime = muejongMTime;
     }
 }

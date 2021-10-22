@@ -6,6 +6,8 @@ using DG.Tweening;
 
 public class UIManager : MonoBehaviour
 {
+    public static UIManager instance;
+
     private GamaManager gamaManagerScript;
 
     public CanvasGroup gameOverPanel;
@@ -16,7 +18,14 @@ public class UIManager : MonoBehaviour
     public Text jumpCountText;
     public Text gameOverJumpText;
 
-
+    void Awake()
+    {
+        if (instance != null)
+        {
+            Debug.LogError("다수의 UI매니저가 실행중입니다.");
+        }
+        instance = this;
+    }
     void Start()
     {
         gamaManagerScript = FindObjectOfType<GamaManager>();
@@ -30,7 +39,7 @@ public class UIManager : MonoBehaviour
         JumpCount();
     }
 
-    void GameOver()
+    public void GameOver()
     {
         if (gamaManagerScript.gameOver)
         {
@@ -53,7 +62,7 @@ public class UIManager : MonoBehaviour
         });
     }
 
-    void JumpCount()
+    public void JumpCount()
     {
         jumpCountText.text = gamaManagerScript.score.ToString();
         gameOverJumpText.text = jumpCountText.text;

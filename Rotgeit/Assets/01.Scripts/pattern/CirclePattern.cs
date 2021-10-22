@@ -37,7 +37,7 @@ public class CirclePattern : MonoBehaviour
         if(other.gameObject.tag == "Obstacle")
         {
             this.gameObject.SetActive(false);
-            GameManager.instance.circleCount--;
+            //GameManager.instance.circleCount--;
         }
     }
 }

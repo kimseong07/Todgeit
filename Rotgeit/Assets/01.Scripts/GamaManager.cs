@@ -5,6 +5,8 @@ using UnityEngine.UI;
 
 public class GamaManager : MonoBehaviour
 {
+    public static GamaManager instance;
+
     private PlayerMove playerScript;
 
     public GameObject backGround;
@@ -21,7 +23,16 @@ public class GamaManager : MonoBehaviour
     public float curResDelay;
     private float resDelay;
 
-    void Start()
+    void Awake()
+    {
+        if (instance != null)
+        {
+            Debug.LogError("다수의 가마매니저가 실행중입니다.");
+        }
+        instance = this;
+    }
+
+        void Start()
     {
         playerScript = FindObjectOfType<PlayerMove>();
 
@@ -57,7 +68,7 @@ public class GamaManager : MonoBehaviour
         }
         RestartPlayerState();
 
-       
+        ResetScorePos();
     }
 
     void RestartPlayerState()
@@ -70,10 +81,23 @@ public class GamaManager : MonoBehaviour
             playerScript.transform.position = new Vector2(0, 0);
             playerScript.GetComponent<Rigidbody2D>().velocity = Vector2.zero;
             playerScript.GetComponent<Rigidbody2D>().gravityScale = 0;
-
+            /*
             GameManager.instance.ResetScore();
             GameManager.instance.ResetCircle();
+            */
             restartGame = false;
+        }
+    }
+
+    void ResetScorePos()
+    {
+        if(Input.GetKeyDown(KeyCode.Q) && gameStart)
+        {
+            if (score > 0)
+            {
+                score--;
+                //GameManager.instance.ResetScore();
+            }
         }
     }
 }
