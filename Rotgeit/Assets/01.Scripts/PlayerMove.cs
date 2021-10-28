@@ -52,7 +52,7 @@ public class PlayerMove : MonoBehaviour
             {
                 if (Input.GetKeyDown(KeyCode.LeftShift) && !mujeog)
                 {
-                    Debug.Log("asd");
+                    Debug.Log("¹«Àû");
                     mujeog = true;
                     playerSprite.color = new Color(0, 0, 0, 0.5f);
                     StartCoroutine(Invincibility());

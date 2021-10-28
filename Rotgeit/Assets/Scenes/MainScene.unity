@@ -1705,7 +1705,7 @@ MonoBehaviour:
   score: 0
   gameStart: 0
   gameOver: 0
-  curResDelay: 1
+  curResDelay: 2
 --- !u!114 &1895816567
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1719,14 +1719,14 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   startTime: 0.1
-  curtime: 0.5
+  curtime: 0.3
   spawnPoint: {fileID: 1327239158}
+  enemyObjs: []
   scorePrefab: {fileID: 610856398736060468, guid: 78b32a94224db054587d1ad34497beb6, type: 3}
   createTime: 0.5
   maxScoreObj: 1
   scoreCount: 0
   scoreList: []
-  enemyObjs: []
 --- !u!114 &1895816568
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1742,7 +1742,6 @@ MonoBehaviour:
   enemyCirclePrefab: {fileID: 4495824765593246701, guid: 3e452febac21b3448b3e732390567bb8, type: 3}
   enemySquarePrefab: {fileID: 1186402023042188268, guid: 6334300e846ad6b4c9536f820c72eddf, type: 3}
   enemyBarPrefab: {fileID: 4495824765593246701, guid: 3e452febac21b3448b3e732390567bb8, type: 3}
-  scorePrefab: {fileID: 610856398736060468, guid: 78b32a94224db054587d1ad34497beb6, type: 3}
 --- !u!1 &1923121207
 GameObject:
   m_ObjectHideFlags: 0

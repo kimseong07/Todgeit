@@ -81,8 +81,9 @@ public class GamaManager : MonoBehaviour
             playerScript.transform.position = new Vector2(0, 0);
             playerScript.GetComponent<Rigidbody2D>().velocity = Vector2.zero;
             playerScript.GetComponent<Rigidbody2D>().gravityScale = 0;
-            /*
+            
             GameManager.instance.ResetScore();
+            /*
             GameManager.instance.ResetCircle();
             */
             restartGame = false;
@@ -96,7 +97,7 @@ public class GamaManager : MonoBehaviour
             if (score > 0)
             {
                 score--;
-                //GameManager.instance.ResetScore();
+                GameManager.instance.ResetScore();
             }
         }
     }
