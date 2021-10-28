@@ -4,6 +4,7 @@ ScriptsOnlyBuild:
     - CirclePattern
     - GamaManager
     - GameManager
+    - ObjectManager
     - PlayerMove
     - ScoreScript
     - UIManager
@@ -85,7 +86,9 @@ ScriptsOnlyBuild:
     - Class: 114
       Script: {instanceID: 5124}
     - Class: 114
-      Script: {instanceID: 5622}
+      Script: {instanceID: 5540}
+    - Class: 114
+      Script: {instanceID: 5624}
     - Class: 115
       Script: {instanceID: 0}
     - Class: 128
@@ -649,6 +652,12 @@ ScriptsOnlyBuild:
     className: ActivationPlayableAsset
   - hash:
       serializedVersion: 2
+      Hash: 2d76dd683f5c62050df92bffd855869b
+    assemblyName: Assembly-CSharp.dll
+    namespaceName: 
+    className: ObjectManager
+  - hash:
+      serializedVersion: 2
       Hash: 7ab0e790220bdca831fdd886b339039d
     assemblyName: UnityEngine.UI.dll
     namespaceName: UnityEngine.UI
@@ -667,7 +676,7 @@ ScriptsOnlyBuild:
     className: FabrikSolver2D
   - hash:
       serializedVersion: 2
-      Hash: 2dd575c16fb714672818a3b00bc67106
+      Hash: 7f2df9f5fe319da2ed8b70268e1fe9fc
     assemblyName: Assembly-CSharp.dll
     namespaceName: 
     className: GameManager
