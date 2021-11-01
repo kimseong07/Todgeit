@@ -26,6 +26,8 @@ public class PlayerMove : MonoBehaviour
 
     SpriteRenderer playerSprite;
 
+    public ParticleSystem explosion;
+
 
     void Start()
     {
@@ -34,6 +36,8 @@ public class PlayerMove : MonoBehaviour
         rigid = GetComponent<Rigidbody2D>();
 
         playerSprite = GetComponent<SpriteRenderer>();
+
+        explosion = FindObjectOfType<ParticleSystem>();
 
         rigid.gravityScale = 0;
 
@@ -75,6 +79,11 @@ public class PlayerMove : MonoBehaviour
         if (mujeongCTime >= 0)
         {
             mujeongCTime = mujeongCTime - Time.deltaTime;
+        }
+
+        if(gamaManager.gameOver)
+        {
+            explosion.Play();
         }
     }
 

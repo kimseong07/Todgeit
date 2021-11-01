@@ -11,8 +11,12 @@ public class GameManager : MonoBehaviour
 
     private ObjectManager objectManager;
 
-    public float startTime;
-    public float curtime;
+    public float circleTime;
+    public float squareTime;
+    public float circleCurTime;
+    public float squareCurTime;
+
+    bool startPat = false;
 
     public GameObject spawnPoint;
 
@@ -110,9 +114,15 @@ public class GameManager : MonoBehaviour
         if (gamaManager.gameStart)
         {
             StartCoroutine(SpawnScore());
-            if (startTime >= 0)
+
+            if (circleTime >= 0)
             {
-                startTime = startTime - Time.deltaTime;
+                circleTime = circleTime - Time.deltaTime;
+            }
+
+            if(squareTime >= 0)
+            {
+                squareTime = squareTime - Time.deltaTime;
             }
         }
 
@@ -120,16 +130,23 @@ public class GameManager : MonoBehaviour
 
     private void Update()
     {
-        if (startTime <= 0)
+        if (circleTime <= 0)
         {
-            if(gamaManager.score > 4)
-            {
-                SpawnSquareEnemy();
-            }
-
             SpawnCircleEnemy();
 
-            startTime = curtime;
+            circleTime = circleCurTime;
+        }
+
+        if(gamaManager.score > 1 && squareTime <= 0)
+        {
+            SpawnSquareEnemy();
+
+            squareTime = squareCurTime;
+        }
+
+        if(!startPat && squareTime <= 0)
+        {
+
         }
     }
 
@@ -140,7 +157,6 @@ public class GameManager : MonoBehaviour
         GameObject enemy = objectManager.MakeObj(enemyObjs[0]);
         CirclePattern eh = enemy.GetComponent<CirclePattern>();
         eh.SetPos(new Vector2(spawnPoint.transform.position.x, randy), 180);
-
     }
 
     void SpawnSquareEnemy()
@@ -150,6 +166,15 @@ public class GameManager : MonoBehaviour
         GameObject enemy = objectManager.MakeObj(enemyObjs[1]);
         CirclePattern eh = enemy.GetComponent<CirclePattern>();
         eh.SetPos(new Vector2(spawnPoint.transform.position.x, randy), 180);
+
+        if(startPat)
+        {
+            GameObject ci = objectManager.MakeObj(enemyObjs[0]);
+            CirclePattern pt = ci.GetComponent<CirclePattern>();
+            pt.SetPos(new Vector2(eh.transform.position.x, eh.transform.position.y), 90);
+
+            startPat = false;
+        }
     }
 
     IEnumerator SpawnScore()
