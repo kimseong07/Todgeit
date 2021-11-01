@@ -16,7 +16,7 @@ public class GameManager : MonoBehaviour
     public float circleCurTime;
     public float squareCurTime;
 
-    bool startPat = false;
+    private float randPatTime = 2f;
 
     public GameObject spawnPoint;
 
@@ -32,6 +32,8 @@ public class GameManager : MonoBehaviour
     private WaitForSeconds wsSpawn;
 
     public List<ScoreScript> scoreList = new List<ScoreScript>();
+
+    private GameObject square;
 
     void Awake()
     {
@@ -124,6 +126,11 @@ public class GameManager : MonoBehaviour
             {
                 squareTime = squareTime - Time.deltaTime;
             }
+
+            if(randPatTime >= 0)
+            {
+                randPatTime = randPatTime - Time.deltaTime;
+            }
         }
 
     }
@@ -137,16 +144,16 @@ public class GameManager : MonoBehaviour
             circleTime = circleCurTime;
         }
 
-        if(gamaManager.score > 1 && squareTime <= 0)
+        if(gamaManager.score >= 1 && squareTime <= 0)
         {
             SpawnSquareEnemy();
 
             squareTime = squareCurTime;
         }
 
-        if(!startPat && squareTime <= 0)
+        if(gamaManager.score >= 1 && randPatTime <= 0)
         {
-
+            StartPattern();
         }
     }
 
@@ -163,17 +170,41 @@ public class GameManager : MonoBehaviour
     {
         float randy = UnityEngine.Random.Range(-maxScoreY, maxScoreY);
 
-        GameObject enemy = objectManager.MakeObj(enemyObjs[1]);
-        CirclePattern eh = enemy.GetComponent<CirclePattern>();
+        square = objectManager.MakeObj(enemyObjs[1]);
+        CirclePattern eh = square.GetComponent<CirclePattern>();
         eh.SetPos(new Vector2(spawnPoint.transform.position.x, randy), 180);
+    }
 
-        if(startPat)
+    void StartPattern()
+    {
+        for (int i = 0; i < 6; i++)
         {
-            GameObject ci = objectManager.MakeObj(enemyObjs[0]);
-            CirclePattern pt = ci.GetComponent<CirclePattern>();
-            pt.SetPos(new Vector2(eh.transform.position.x, eh.transform.position.y), 90);
+            GameObject ptobj = objectManager.MakeObj(enemyObjs[0]);
+            CirclePattern pt = ptobj.GetComponent<CirclePattern>();
+            switch (i)
+            {
+                case 0:
+                    pt.SetPos(new Vector2(square.transform.position.x, square.transform.position.y), 60);
+                    break;
+                case 1:
+                    pt.SetPos(new Vector2(square.transform.position.x, square.transform.position.y), 120);
+                    break;
+                case 2:
+                    pt.SetPos(new Vector2(square.transform.position.x, square.transform.position.y), 180);
+                    break;
+                case 3:
+                    pt.SetPos(new Vector2(square.transform.position.x, square.transform.position.y), 240);
+                    break;
+                case 4:
+                    pt.SetPos(new Vector2(square.transform.position.x, square.transform.position.y), 300);
+                    break;
+                case 5:
+                    pt.SetPos(new Vector2(square.transform.position.x, square.transform.position.y), 360);
+                    break;
+            }
 
-            startPat = false;
+            square.SetActive(false);
+            randPatTime = UnityEngine.Random.Range(2f, 3f);
         }
     }
 
