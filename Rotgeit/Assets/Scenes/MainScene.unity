@@ -6735,6 +6735,7 @@ MonoBehaviour:
   enemyCirclePrefab: {fileID: 4495824765593246701, guid: 3e452febac21b3448b3e732390567bb8, type: 3}
   enemySquarePrefab: {fileID: 1186402023042188268, guid: 6334300e846ad6b4c9536f820c72eddf, type: 3}
   enemyBarPrefab: {fileID: 3311028530862909914, guid: 40dae2ca33ae65f4bbfe91f8ecd2bc96, type: 3}
+  enemyRealBarPrefab: {fileID: 7839622051221548723, guid: b2d76ecc6d872284f89ae14f72d8f69d, type: 3}
 --- !u!114 &1895816569
 MonoBehaviour:
   m_ObjectHideFlags: 0

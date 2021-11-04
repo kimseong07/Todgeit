@@ -16,9 +16,17 @@ public class BarPattern : MonoBehaviour
     public float lifeTime = 3.0f;
     WaitForSeconds ws;
 
+    private ObjectManager objectManager;
+    private GameManager gameManager;
+
+    public float realBarCount;
     void Start()
     {
         playerShadow = FindObjectOfType<PlayerShadowMove>();
+
+        objectManager = FindObjectOfType<ObjectManager>();
+
+        gameManager = FindObjectOfType<GameManager>();
 
         ws = new WaitForSeconds(lifeTime);
 
@@ -58,9 +66,17 @@ public class BarPattern : MonoBehaviour
         transform.rotation = Quaternion.AngleAxis(angle, Vector3.forward);
     }
 
+    void SpawnBarEnemy()
+    {
+        GameObject enemy = objectManager.MakeObj(gameManager.enemyObjs[3]);
+        RealBarPattern bh = enemy.GetComponent<RealBarPattern>();
+        bh.SetPos(new Vector2(this.transform.position.x, 0), 0);
+    }
+
     IEnumerator SetActiveFalse()
     {
         yield return ws;
+        SpawnBarEnemy();
         this.gameObject.SetActive(false);
     }
 }

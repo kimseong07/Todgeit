@@ -7,10 +7,12 @@ public class ObjectManager : MonoBehaviour
     public GameObject enemyCirclePrefab;
     public GameObject enemySquarePrefab;
     public GameObject enemyBarPrefab;
+    public GameObject enemyRealBarPrefab;
 
     GameObject[] enemyCircle;
     GameObject[] enemySquare;
     GameObject[] enemyBar;
+    GameObject[] enemyRealBar;
 
     GameObject[] targetPool;
 
@@ -19,6 +21,7 @@ public class ObjectManager : MonoBehaviour
         enemyCircle = new GameObject[40];
         enemySquare = new GameObject[30];
         enemyBar = new GameObject[5];
+        enemyRealBar = new GameObject[5];
 
         Generate();
     }
@@ -40,6 +43,11 @@ public class ObjectManager : MonoBehaviour
             enemyBar[i] = Instantiate(enemyBarPrefab);
             enemyBar[i].SetActive(false);
         }
+        for (int i = 0; i < enemyRealBar.Length; i++)
+        {
+            enemyRealBar[i] = Instantiate(enemyRealBarPrefab);
+            enemyRealBar[i].SetActive(false);
+        }
     }
 
     public GameObject MakeObj(string type)
@@ -54,6 +62,9 @@ public class ObjectManager : MonoBehaviour
                 break;
             case "enemyBar":
                 targetPool = enemyBar;
+                break;
+            case "enemyRealBar":
+                targetPool = enemyRealBar;
                 break;
             default:
                 break;  

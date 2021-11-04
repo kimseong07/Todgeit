@@ -19,8 +19,8 @@ public class PlayerMove : MonoBehaviour
 
     public float mujeogTime = 0f;
 
-    private float mujeongCTime = 8f;
-    private float muejongMTime = 8f;
+    private float mujeongCTime = 0.1f;
+    private float muejongMTime = 0.1f;
 
     public bool mujeog = false;
 
@@ -48,7 +48,7 @@ public class PlayerMove : MonoBehaviour
     void Update()
     {
         if (gamaManager.gameStart)
-        {
+        { 
             rigid.gravityScale = 1;
 
             if (mujeongCTime <= 0)

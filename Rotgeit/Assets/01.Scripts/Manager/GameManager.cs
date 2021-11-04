@@ -71,7 +71,7 @@ public class GameManager : MonoBehaviour
         gamaManager = GetComponent<GamaManager>();
         objectManager = GetComponent<ObjectManager>();
 
-        enemyObjs = new string[] { "enemyCircle", "enemySquare", "enemyBar"};
+        enemyObjs = new string[] { "enemyCircle", "enemySquare", "enemyBar", "enemyRealBar"};
 
         isRight = true;
     }
@@ -80,6 +80,8 @@ public class GameManager : MonoBehaviour
     {
         scoreList.ForEach(x => x.gameObject.SetActive(false));
         scoreCount = 0;
+        barCount = 0;
+        randPatTime = 2f;
     }
 
 
