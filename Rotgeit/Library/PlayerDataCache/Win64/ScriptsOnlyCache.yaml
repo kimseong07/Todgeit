@@ -1,11 +1,14 @@
 ScriptsOnlyBuild:
   usedScripts:
     Assembly-CSharp.dll:
+    - BarPattern
     - CirclePattern
+    - ColorManager
     - GamaManager
     - GameManager
     - ObjectManager
     - PlayerMove
+    - PlayerShadowMove
     - ScoreScript
     - UIManager
     Unity.2D.Animation.Editor.dll:
@@ -74,21 +77,27 @@ ScriptsOnlyBuild:
     - Class: 114
       Script: {instanceID: 2880}
     - Class: 114
-      Script: {instanceID: 3008}
+      Script: {instanceID: 2982}
     - Class: 114
-      Script: {instanceID: 3252}
+      Script: {instanceID: 3010}
     - Class: 114
-      Script: {instanceID: 3364}
+      Script: {instanceID: 3254}
     - Class: 114
-      Script: {instanceID: 3980}
+      Script: {instanceID: 3366}
     - Class: 114
-      Script: {instanceID: 4914}
+      Script: {instanceID: 3982}
     - Class: 114
-      Script: {instanceID: 5124}
+      Script: {instanceID: 4916}
     - Class: 114
-      Script: {instanceID: 5540}
+      Script: {instanceID: 5126}
     - Class: 114
-      Script: {instanceID: 5624}
+      Script: {instanceID: 5542}
+    - Class: 114
+      Script: {instanceID: 5626}
+    - Class: 114
+      Script: {instanceID: 32966}
+    - Class: 114
+      Script: {instanceID: 37752}
     - Class: 115
       Script: {instanceID: 0}
     - Class: 128
@@ -96,6 +105,10 @@ ScriptsOnlyBuild:
     - Class: 157
       Script: {instanceID: 0}
     - Class: 196
+      Script: {instanceID: 0}
+    - Class: 198
+      Script: {instanceID: 0}
+    - Class: 199
       Script: {instanceID: 0}
     - Class: 212
       Script: {instanceID: 0}
@@ -290,6 +303,12 @@ ScriptsOnlyBuild:
     assemblyName: Assembly-CSharp.dll
     namespaceName: 
     className: UIManager
+  - hash:
+      serializedVersion: 2
+      Hash: 80f7ac0a81dca331eb87537a359bcbd1
+    assemblyName: Assembly-CSharp.dll
+    namespaceName: 
+    className: ColorManager
   - hash:
       serializedVersion: 2
       Hash: 71bb6a6b6c8f052f948db64c7dd3ca4f
@@ -622,7 +641,7 @@ ScriptsOnlyBuild:
     className: TMP_SpriteAsset
   - hash:
       serializedVersion: 2
-      Hash: e205f25a00e1ee0e852feba4ed635ebc
+      Hash: 60b17b221ee3c0b3ed2e323299cf0dbf
     assemblyName: Assembly-CSharp.dll
     namespaceName: 
     className: PlayerMove
@@ -676,10 +695,22 @@ ScriptsOnlyBuild:
     className: FabrikSolver2D
   - hash:
       serializedVersion: 2
-      Hash: 7f2df9f5fe319da2ed8b70268e1fe9fc
+      Hash: 9308811cf79ac86f987fa935437af121
     assemblyName: Assembly-CSharp.dll
     namespaceName: 
     className: GameManager
+  - hash:
+      serializedVersion: 2
+      Hash: 141848d9b94b3ef0d0d12bbf1e04a9a7
+    assemblyName: Assembly-CSharp.dll
+    namespaceName: 
+    className: PlayerShadowMove
+  - hash:
+      serializedVersion: 2
+      Hash: 06e4e674c58276afc1b00cf1d15743e2
+    assemblyName: Assembly-CSharp.dll
+    namespaceName: 
+    className: BarPattern
   platform: 19
   scenePathNames:
   - Assets/Scenes/MainScene.unity

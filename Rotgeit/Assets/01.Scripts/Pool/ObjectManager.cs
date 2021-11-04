@@ -17,8 +17,8 @@ public class ObjectManager : MonoBehaviour
     private void Awake()
     {
         enemyCircle = new GameObject[40];
-        enemySquare = new GameObject[40];
-        enemyBar = new GameObject[10];
+        enemySquare = new GameObject[30];
+        enemyBar = new GameObject[5];
 
         Generate();
     }

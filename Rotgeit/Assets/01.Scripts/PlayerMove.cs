@@ -24,9 +24,8 @@ public class PlayerMove : MonoBehaviour
 
     public bool mujeog = false;
 
-    SpriteRenderer playerSprite;
-
     public ParticleSystem explosion;
+    public float particleCount;
 
 
     void Start()
@@ -35,7 +34,7 @@ public class PlayerMove : MonoBehaviour
 
         rigid = GetComponent<Rigidbody2D>();
 
-        playerSprite = GetComponent<SpriteRenderer>();
+
 
         explosion = FindObjectOfType<ParticleSystem>();
 
@@ -58,7 +57,7 @@ public class PlayerMove : MonoBehaviour
                 {
                     Debug.Log("¹«Àû");
                     mujeog = true;
-                    playerSprite.color = new Color(0, 0, 0, 0.5f);
+                    ColorManager.instance.BlackColor();
                     StartCoroutine(Invincibility());
                 }
             }
@@ -81,10 +80,15 @@ public class PlayerMove : MonoBehaviour
             mujeongCTime = mujeongCTime - Time.deltaTime;
         }
 
-        if(gamaManager.gameOver)
+        if(gamaManager.gameOver && particleCount < 1)
         {
             explosion.Play();
+            this.gameObject.SetActive(false);
+
+            particleCount++;
         }
+
+        explosion.gameObject.transform.position = this.gameObject.transform.position;
     }
 
     void Jump()
@@ -161,7 +165,7 @@ public class PlayerMove : MonoBehaviour
     {
         yield return new WaitForSeconds(mujeogTime);
         mujeog = false;
-        playerSprite.color = new Color(0, 0, 0, 1);
+        ColorManager.instance.WhiteColor();
         mujeongCTime = muejongMTime;
     }
 }

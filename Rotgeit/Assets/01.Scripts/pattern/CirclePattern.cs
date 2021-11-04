@@ -6,7 +6,7 @@ public class CirclePattern : MonoBehaviour
 {
     public float speed = 0f;
 
-    private float explosionTime = 0f;
+    //private float explosionTime = 0f;
 
     private void Start()
     {
