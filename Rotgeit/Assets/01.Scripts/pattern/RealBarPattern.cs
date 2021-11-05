@@ -17,7 +17,7 @@ public class RealBarPattern : MonoBehaviour
 
     private void Update()
     {
-        SetActiveFalse();
+        StartCoroutine(SetActiveFalse());
     }
 
     public void SetPos(Vector3 pos, float angle = 0f)

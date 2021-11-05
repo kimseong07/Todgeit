@@ -9,6 +9,7 @@ ScriptsOnlyBuild:
     - ObjectManager
     - PlayerMove
     - PlayerShadowMove
+    - RealBarPattern
     - ScoreScript
     - UIManager
     Unity.2D.Animation.Editor.dll:
@@ -69,35 +70,37 @@ ScriptsOnlyBuild:
     - Class: 114
       Script: {instanceID: 1534}
     - Class: 114
-      Script: {instanceID: 2208}
+      Script: {instanceID: 1728}
     - Class: 114
-      Script: {instanceID: 2630}
+      Script: {instanceID: 2210}
     - Class: 114
-      Script: {instanceID: 2790}
+      Script: {instanceID: 2632}
     - Class: 114
-      Script: {instanceID: 2880}
+      Script: {instanceID: 2634}
     - Class: 114
-      Script: {instanceID: 2982}
+      Script: {instanceID: 2794}
     - Class: 114
-      Script: {instanceID: 3010}
+      Script: {instanceID: 2884}
     - Class: 114
-      Script: {instanceID: 3254}
+      Script: {instanceID: 2986}
     - Class: 114
-      Script: {instanceID: 3366}
+      Script: {instanceID: 3014}
     - Class: 114
-      Script: {instanceID: 3982}
+      Script: {instanceID: 3258}
     - Class: 114
-      Script: {instanceID: 4916}
+      Script: {instanceID: 3370}
     - Class: 114
-      Script: {instanceID: 5126}
+      Script: {instanceID: 3986}
     - Class: 114
-      Script: {instanceID: 5542}
+      Script: {instanceID: 4220}
     - Class: 114
-      Script: {instanceID: 5626}
+      Script: {instanceID: 4922}
     - Class: 114
-      Script: {instanceID: 32966}
+      Script: {instanceID: 5132}
     - Class: 114
-      Script: {instanceID: 37752}
+      Script: {instanceID: 5548}
+    - Class: 114
+      Script: {instanceID: 5632}
     - Class: 115
       Script: {instanceID: 0}
     - Class: 128
@@ -203,6 +206,12 @@ ScriptsOnlyBuild:
     className: HorizontalLayoutGroup
   - hash:
       serializedVersion: 2
+      Hash: 141848d9b94b3ef0d0d12bbf1e04a9a7
+    assemblyName: Assembly-CSharp.dll
+    namespaceName: 
+    className: PlayerShadowMove
+  - hash:
+      serializedVersion: 2
       Hash: caa533b001ae39b864ba8425019e2268
     assemblyName: UnityEngine.UI.dll
     namespaceName: UnityEngine.UI
@@ -261,6 +270,12 @@ ScriptsOnlyBuild:
     assemblyName: UnityEngine.UI.dll
     namespaceName: UnityEngine.UI
     className: CanvasScaler
+  - hash:
+      serializedVersion: 2
+      Hash: dd31af7f71b343881b6f0e3126f489cf
+    assemblyName: Assembly-CSharp.dll
+    namespaceName: 
+    className: BarPattern
   - hash:
       serializedVersion: 2
       Hash: cf9f5cf2c3145a37ac07f00e50e460f9
@@ -527,6 +542,12 @@ ScriptsOnlyBuild:
     className: ActivationTrack
   - hash:
       serializedVersion: 2
+      Hash: bb8814741d7085ebb3d19a1a11769619
+    assemblyName: Assembly-CSharp.dll
+    namespaceName: 
+    className: RealBarPattern
+  - hash:
+      serializedVersion: 2
       Hash: 0edeba255bdbade25edc357f1412ba38
     assemblyName: Unity.2D.SpriteShape.Runtime.dll
     namespaceName: UnityEngine.U2D
@@ -671,7 +692,7 @@ ScriptsOnlyBuild:
     className: ActivationPlayableAsset
   - hash:
       serializedVersion: 2
-      Hash: 2d76dd683f5c62050df92bffd855869b
+      Hash: d142f6d09c1e353a2ed6ecec17fdd0cf
     assemblyName: Assembly-CSharp.dll
     namespaceName: 
     className: ObjectManager
@@ -699,19 +720,7 @@ ScriptsOnlyBuild:
     assemblyName: Assembly-CSharp.dll
     namespaceName: 
     className: GameManager
-  - hash:
-      serializedVersion: 2
-      Hash: 141848d9b94b3ef0d0d12bbf1e04a9a7
-    assemblyName: Assembly-CSharp.dll
-    namespaceName: 
-    className: PlayerShadowMove
-  - hash:
-      serializedVersion: 2
-      Hash: 06e4e674c58276afc1b00cf1d15743e2
-    assemblyName: Assembly-CSharp.dll
-    namespaceName: 
-    className: BarPattern
   platform: 19
   scenePathNames:
   - Assets/Scenes/MainScene.unity
-  playerPath: C:/Users/ROG/Desktop/Todgeit/Rotgeit.exe
+  playerPath: C:/Users/ROG/Desktop/Totgeit/Rotgeit.exe
