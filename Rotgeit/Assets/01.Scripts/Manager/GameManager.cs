@@ -287,7 +287,7 @@ public class GameManager : MonoBehaviour
             }
 
             square.SetActive(false);
-            randPatTime = UnityEngine.Random.Range(2f, 3f);
+            randPatTime = UnityEngine.Random.Range(1.5f, 3.0f);
         }
     }
 
