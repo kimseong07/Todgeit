@@ -53,7 +53,7 @@ public class PlayerMove : MonoBehaviour
 
             if (mujeongCTime <= 0)
             {
-                if (Input.GetKeyDown(KeyCode.LeftShift) && !mujeog)
+                if (Input.GetKeyDown(KeyCode.RightShift) && !mujeog)
                 {
                     Debug.Log("¹«Àû");
                     mujeog = true;
@@ -154,7 +154,9 @@ public class PlayerMove : MonoBehaviour
         gamaManager.gameStart = false;
 
         mujeongCTime = 0f;
-        
+        mujeog = false;
+        ColorManager.instance.WhiteColor();
+
         //GameManager.instance.ResetCircle();
 
         rigid.velocity = Vector2.zero;

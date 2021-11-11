@@ -9,6 +9,7 @@ public class BarPattern : MonoBehaviour
     float dist;
     public float speed = 1f;
     float time;
+    float countdown = 3f;
     float curtime;
     Vector2 startPos;
     Vector2 targetPos;
@@ -18,6 +19,8 @@ public class BarPattern : MonoBehaviour
 
     private ObjectManager objectManager;
     private GameManager gameManager;
+
+    public TextMesh textCount;
 
     public float realBarCount;
     void Start()
@@ -34,11 +37,16 @@ public class BarPattern : MonoBehaviour
 
     void Update()
     {
+
         if (curtime < time)
         {
             curtime += Time.deltaTime;
             transform.position = Vector2.Lerp(startPos, targetPos, curtime / time);
         }
+
+        countdown -= Time.deltaTime;
+
+        textCount.text = Mathf.Ceil(countdown).ToString();
 
         SetTargetPos(playerShadow.transform.position);
         this.gameObject.transform.position = new Vector2(this.gameObject.transform.position.x, 0);
