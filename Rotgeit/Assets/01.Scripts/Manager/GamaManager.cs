@@ -32,7 +32,7 @@ public class GamaManager : MonoBehaviour
         instance = this;
     }
 
-        void Start()
+    void Start()
     {
         playerScript = FindObjectOfType<PlayerMove>();
 
@@ -45,7 +45,7 @@ public class GamaManager : MonoBehaviour
 
     private void FixedUpdate()
     {
-        if(gameOver)
+        if(resDelay >= 0)
         {
             resDelay = resDelay - Time.deltaTime;
         }
@@ -54,18 +54,34 @@ public class GamaManager : MonoBehaviour
     {
         if (resDelay <= 0)
         {
-            restartBtn.onClick.AddListener(() =>
+            if (gameOver)
+            {
+                restartBtn.onClick.AddListener(() =>
+                    {
+                        restartGame = true;
+                        resDelay = curResDelay;
+                    });
+
+                if (Input.GetKeyDown(KeyCode.R))
                 {
                     restartGame = true;
                     resDelay = curResDelay;
-                });
+                }
+            }
 
-            if (Input.GetKeyUp(KeyCode.R) && gameOver)
+            if (!gameOver)
             {
-                restartGame = true;
-                resDelay = curResDelay;
+                if (Input.GetKeyDown(KeyCode.R))
+                {
+
+                    gameStart = false;
+                    gameOver = true;
+                    restartGame = true;
+                    resDelay = curResDelay;
+                }
             }
         }
+
         RestartPlayerState();
 
         ResetScorePos();
@@ -85,9 +101,6 @@ public class GamaManager : MonoBehaviour
             playerScript.gameObject.SetActive(true);
 
             GameManager.instance.ResetScore();
-            /*
-            GameManager.instance.ResetCircle();
-            */
             restartGame = false;
         }
     }

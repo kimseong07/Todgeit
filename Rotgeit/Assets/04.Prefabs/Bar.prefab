@@ -76,7 +76,7 @@ SpriteRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_Sprite: {fileID: 7482667652216324306, guid: 48e93eef0688c4a259cb0eddcd8661f7, type: 3}
-  m_Color: {r: 0, g: 0, b: 0, a: 0.12941177}
+  m_Color: {r: 0, g: 0, b: 0, a: 0.4}
   m_FlipX: 0
   m_FlipY: 0
   m_DrawMode: 0
@@ -145,8 +145,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1f50ac56c88bb224981d479d75472b25, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  speed: 3
-  lifeTime: 3
+  speed: 4.2
+  lifeTime: 1.5
   textCount: {fileID: 6560444963102801734}
   realBarCount: 0
 --- !u!1 &5273028775184751767
@@ -161,7 +161,7 @@ GameObject:
   - component: {fileID: 2865201622646456169}
   - component: {fileID: 6560444963102801734}
   m_Layer: 0
-  m_Name: GameObject
+  m_Name: Text
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -200,7 +200,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 10100, guid: 0000000000000000e000000000000000, type: 0}
+  - {fileID: 2100000, guid: ed30d130c9ef016429ed2c8ba3319aa9, type: 3}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -237,10 +237,10 @@ TextMesh:
   m_Anchor: 4
   m_Alignment: 1
   m_TabSize: 4
-  m_FontSize: 0
-  m_FontStyle: 1
+  m_FontSize: 30
+  m_FontStyle: 0
   m_RichText: 1
-  m_Font: {fileID: 0}
+  m_Font: {fileID: 12800000, guid: ed30d130c9ef016429ed2c8ba3319aa9, type: 3}
   m_Color:
     serializedVersion: 2
     rgba: 4278190080

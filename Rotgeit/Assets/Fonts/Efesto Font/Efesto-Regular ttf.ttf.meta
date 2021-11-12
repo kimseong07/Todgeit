@@ -1,0 +1,22 @@
+fileFormatVersion: 2
+guid: ed30d130c9ef016429ed2c8ba3319aa9
+TrueTypeFontImporter:
+  externalObjects: {}
+  serializedVersion: 4
+  fontSize: 16
+  forceTextureCase: -2
+  characterSpacing: 0
+  characterPadding: 1
+  includeFontData: 1
+  fontNames:
+  - Efesto
+  fallbackFontReferences:
+  - {fileID: 12800000, guid: 1a27f5d6889a6e444b09c6a27f8e6be3, type: 3}
+  customCharacters: 
+  fontRenderingMode: 0
+  ascentCalculationMode: 1
+  useLegacyBoundsCalculation: 0
+  shouldRoundAdvanceValue: 1
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 

@@ -82,6 +82,8 @@ public class GameManager : MonoBehaviour
         scoreCount = 0;
         barCount = 0;
         randPatTime = 2f;
+
+        ObjectManager.instance.ResetEnemy();
     }
 
 
@@ -126,22 +128,8 @@ public class GameManager : MonoBehaviour
         {
             StartCoroutine(SpawnScore());
 
-            if (circleTime >= 0)
-            {
-                circleTime = circleTime - Time.deltaTime;
-            }
-
-            if(squareTime >= 0)
-            {
-                squareTime = squareTime - Time.deltaTime;
-            }
-
-            if(randPatTime >= 0 && gamaManager.score >= 1)
-            {
-                randPatTime = randPatTime - Time.deltaTime;
-            }
+            Timer();
         }
-
     }
 
     private void Update()
@@ -318,6 +306,24 @@ public class GameManager : MonoBehaviour
             }
             yield return wsSpawn;
 
+        }
+    }
+
+    public void Timer()
+    {
+        if (circleTime >= 0)
+        {
+            circleTime = circleTime - Time.deltaTime;
+        }
+
+        if (squareTime >= 0)
+        {
+            squareTime = squareTime - Time.deltaTime;
+        }
+
+        if (randPatTime >= 0 && gamaManager.score >= 1)
+        {
+            randPatTime = randPatTime - Time.deltaTime;
         }
     }
 }

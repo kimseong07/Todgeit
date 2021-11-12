@@ -4,6 +4,8 @@ using UnityEngine;
 
 public class ObjectManager : MonoBehaviour
 {
+    public static ObjectManager instance;
+
     public GameObject enemyCirclePrefab;
     public GameObject enemySquarePrefab;
     public GameObject enemyBarPrefab;
@@ -14,10 +16,16 @@ public class ObjectManager : MonoBehaviour
     GameObject[] enemyBar;
     GameObject[] enemyRealBar;
 
-    GameObject[] targetPool;
+    public GameObject[] targetPool;
 
     private void Awake()
     {
+        if (instance != null)
+        {
+            Debug.LogError("다수의 게임매니저가 실행중입니다.");
+        }
+        instance = this;
+
         enemyCircle = new GameObject[40];
         enemySquare = new GameObject[30];
         enemyBar = new GameObject[5];
@@ -80,5 +88,16 @@ public class ObjectManager : MonoBehaviour
         }
 
         return null;
+    }
+
+    public void ResetEnemy()
+    {
+        for (int i = 0; i < targetPool.Length; i++)
+        {
+            if(targetPool[i].activeSelf)
+            {
+                targetPool[i].gameObject.SetActive(false);
+            }
+        }
     }
 }

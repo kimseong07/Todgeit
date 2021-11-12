@@ -9,7 +9,7 @@ public class BarPattern : MonoBehaviour
     float dist;
     public float speed = 1f;
     float time;
-    float countdown = 3f;
+    float countdown = 1.5f;
     float curtime;
     Vector2 startPos;
     Vector2 targetPos;
@@ -84,6 +84,7 @@ public class BarPattern : MonoBehaviour
     IEnumerator SetActiveFalse()
     {
         yield return ws;
+        countdown = 1.5f;
         SpawnBarEnemy();
         this.gameObject.SetActive(false);
     }

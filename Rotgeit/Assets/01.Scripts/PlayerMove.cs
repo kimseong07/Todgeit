@@ -19,8 +19,8 @@ public class PlayerMove : MonoBehaviour
 
     public float mujeogTime = 0f;
 
-    private float mujeongCTime = 0.1f;
-    private float muejongMTime = 0.1f;
+    private float mujeongCTime = 3f;
+    private float muejongMTime = 3f;
 
     public bool mujeog = false;
 
@@ -53,7 +53,7 @@ public class PlayerMove : MonoBehaviour
 
             if (mujeongCTime <= 0)
             {
-                if (Input.GetKeyDown(KeyCode.RightShift) && !mujeog)
+                if (Input.GetKeyDown(KeyCode.LeftShift) && !mujeog)
                 {
                     Debug.Log("¹«Àû");
                     mujeog = true;
@@ -87,8 +87,6 @@ public class PlayerMove : MonoBehaviour
 
             particleCount++;
         }
-
-        explosion.gameObject.transform.position = this.gameObject.transform.position;
     }
 
     void Jump()
@@ -161,6 +159,8 @@ public class PlayerMove : MonoBehaviour
 
         rigid.velocity = Vector2.zero;
         rigid.gravityScale = 0;
+
+        explosion.gameObject.transform.position = this.gameObject.transform.position;
     }
 
     IEnumerator Invincibility()
@@ -168,6 +168,7 @@ public class PlayerMove : MonoBehaviour
         yield return new WaitForSeconds(mujeogTime);
         mujeog = false;
         ColorManager.instance.WhiteColor();
+        
         mujeongCTime = muejongMTime;
     }
 }

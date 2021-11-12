@@ -1,0 +1,22 @@
+fileFormatVersion: 2
+guid: fe4078ab918fd024db5234f573d911d2
+TrueTypeFontImporter:
+  externalObjects: {}
+  serializedVersion: 4
+  fontSize: 16
+  forceTextureCase: -2
+  characterSpacing: 0
+  characterPadding: 1
+  includeFontData: 1
+  fontNames:
+  - Efesto Regular Italic
+  fallbackFontReferences:
+  - {fileID: 12800000, guid: 87e88103e16981d4ea3ad21bf640e377, type: 3}
+  customCharacters: 
+  fontRenderingMode: 0
+  ascentCalculationMode: 1
+  useLegacyBoundsCalculation: 0
+  shouldRoundAdvanceValue: 1
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 

@@ -12,11 +12,17 @@ public class UIManager : MonoBehaviour
 
     public CanvasGroup gameOverPanel;
     [Header("Button")]
-    public Button pauseBtn;
+    public Button optionBtn;
+    public Button trophyBtn;
+    public Button outBtn;
 
     [Header("Text")]
     public Text jumpCountText;
     public Text gameOverJumpText;
+
+    public CanvasGroup gamePausePanel;
+
+    public bool onPaues;
 
     void Awake()
     {
@@ -37,6 +43,8 @@ public class UIManager : MonoBehaviour
     {
         GameOver();
         JumpCount();
+        Pause();
+        BtnCollection();
     }
 
     public void GameOver()
@@ -54,17 +62,44 @@ public class UIManager : MonoBehaviour
         }
     }
 
-    void Pause()
-    {
-        pauseBtn.onClick.AddListener(() =>
-        {
-
-        });
-    }
-
     public void JumpCount()
     {
         jumpCountText.text = gamaManagerScript.score.ToString();
         gameOverJumpText.text = jumpCountText.text;
+    }
+
+    void Pause()
+    {
+        if(Input.GetKeyDown(KeyCode.Escape) && !onPaues)
+        {
+            gamePausePanel.alpha = 1;
+            gamePausePanel.interactable = true;
+            onPaues = true;
+        }
+        else if(Input.GetKeyDown(KeyCode.Escape) && onPaues)
+        {
+            gamePausePanel.alpha = 0;
+            gamePausePanel.interactable = false;
+            onPaues = false;
+        }
+    }
+
+    void BtnCollection()
+    {
+        outBtn.onClick.AddListener(() =>
+        {
+            Debug.Log("나가기");
+        });
+
+        optionBtn.onClick.AddListener(() =>
+        {
+            Debug.Log("설정");
+        });
+
+        trophyBtn.onClick.AddListener(() =>
+        {
+            Debug.Log("니얼굴");
+            Application.Quit();
+        });
     }
 }
