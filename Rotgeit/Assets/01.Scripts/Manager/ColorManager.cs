@@ -11,6 +11,8 @@ public class ColorManager : MonoBehaviour
     public SpriteRenderer backGround;
     public Image fillSprite;
 
+    public float coolTime;
+
     private void Awake()
     {
         if(instance != null)
@@ -35,18 +37,25 @@ public class ColorManager : MonoBehaviour
 
     public void WhiteColor()
     {
-        playerSprite.GetComponent<SpriteRenderer>().color = new Color(0, 0, 0, 1f);
+        playerSprite.GetComponent<SpriteRenderer>().color = new Color(0.4f, 0.4f, 0.4f, 1f);
         //backGround.color = new Color(1, 1, 1, 1f);
     }
 
     public void BlackColor()
     {
+        fillSprite.gameObject.SetActive(false);
         playerSprite.GetComponent<SpriteRenderer>().color = new Color(1, 0.9f, 0.2f, 1f);
         //backGround.color = new Color(0.9f, 1, 0.6f, 1f);
     }
 
-    public void CoolTimeColor()
+    public IEnumerator CoolTime(float cool)
     {
-        //fillSprite.fillAmount = Mathf.Lerp();
+        while (cool > 1.0f)
+        {
+            cool -= Time.deltaTime;
+            fillSprite.gameObject.SetActive(true);
+            fillSprite.fillAmount = (1.0f / cool);
+            yield return new WaitForFixedUpdate();
+        }
     }
 }

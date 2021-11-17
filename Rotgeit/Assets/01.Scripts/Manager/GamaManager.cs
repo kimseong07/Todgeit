@@ -21,7 +21,7 @@ public class GamaManager : MonoBehaviour
     public bool gameOver = false;
 
     public float curResDelay;
-    private float resDelay;
+    public float resDelay;
 
     void Awake()
     {
@@ -73,7 +73,6 @@ public class GamaManager : MonoBehaviour
             {
                 if (Input.GetKeyDown(KeyCode.R))
                 {
-
                     gameStart = false;
                     gameOver = true;
                     restartGame = true;
@@ -100,7 +99,11 @@ public class GamaManager : MonoBehaviour
             playerScript.particleCount = 0;
             playerScript.gameObject.SetActive(true);
 
+            ColorManager.instance.fillSprite.fillAmount = 1f;
+
             GameManager.instance.ResetScore();
+
+            AudioManager.instance.mainAudio.Play();
             restartGame = false;
         }
     }

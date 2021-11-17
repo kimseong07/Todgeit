@@ -8,21 +8,20 @@ public class PlayerMove : MonoBehaviour
 
     Rigidbody2D rigid;
     public float jumpPower = 1f;
-
     public int jumpCount = 0;
 
     public float forcePower = 10f;
 
     public float maxPower = 5f;
-
     public float slowPower = 1.2f;
 
     public float mujeogTime = 0f;
-
     private float mujeongCTime = 3f;
     private float muejongMTime = 3f;
 
     public bool mujeog = false;
+
+    public bool coolColor = false;
 
     public ParticleSystem explosion;
     public float particleCount;
@@ -33,8 +32,6 @@ public class PlayerMove : MonoBehaviour
         gamaManager = FindObjectOfType<GamaManager>();
 
         rigid = GetComponent<Rigidbody2D>();
-
-
 
         explosion = FindObjectOfType<ParticleSystem>();
 
@@ -55,11 +52,17 @@ public class PlayerMove : MonoBehaviour
             {
                 if (Input.GetKeyDown(KeyCode.LeftShift) && !mujeog)
                 {
-                    Debug.Log("¹«Àû");
                     mujeog = true;
                     ColorManager.instance.BlackColor();
+
                     StartCoroutine(Invincibility());
                 }
+            }
+
+            if (coolColor)
+            {
+                StartCoroutine(ColorManager.instance.CoolTime(4.3f));
+                coolColor = false;
             }
         }
 
@@ -161,14 +164,18 @@ public class PlayerMove : MonoBehaviour
         rigid.gravityScale = 0;
 
         explosion.gameObject.transform.position = this.gameObject.transform.position;
+        AudioManager.instance.PlayerDie();
     }
 
     IEnumerator Invincibility()
     {
         yield return new WaitForSeconds(mujeogTime);
         mujeog = false;
+        coolColor = true;
         ColorManager.instance.WhiteColor();
         
         mujeongCTime = muejongMTime;
     }
+
+
 }
