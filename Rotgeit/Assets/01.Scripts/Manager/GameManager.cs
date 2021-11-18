@@ -82,8 +82,6 @@ public class GameManager : MonoBehaviour
         scoreCount = 0;
         barCount = 0;
         randPatTime = 2f;
-
-        ObjectManager.instance.ResetEnemy();
     }
 
 

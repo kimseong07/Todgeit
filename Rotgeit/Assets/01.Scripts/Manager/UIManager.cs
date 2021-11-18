@@ -79,6 +79,8 @@ public class UIManager : MonoBehaviour
             onPaues = true;
             Time.timeScale = 0f;
             GamaManager.instance.resDelay = 600f;
+
+            ObjectManager.instance.ResetEnemy();
         }
         else if(Input.GetKeyDown(KeyCode.Escape) && onPaues)
         {

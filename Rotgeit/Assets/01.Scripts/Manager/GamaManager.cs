@@ -103,6 +103,8 @@ public class GamaManager : MonoBehaviour
 
             GameManager.instance.ResetScore();
 
+            ObjectManager.instance.ResetEnemy();
+
             AudioManager.instance.mainAudio.Play();
             restartGame = false;
         }

@@ -36,7 +36,9 @@ public class AudioManager : MonoBehaviour
     public void SoundSlider()
     {
         mainAudio.volume = mainVolumeBar.value;
+        dieAudio.volume = mainVolumeBar.value;
         volumeBar = mainVolumeBar.value;
+        volumeBar = dieAudio.volume;
         PlayerPrefs.SetFloat("volumebar", volumeBar);
     }
 
@@ -45,6 +47,7 @@ public class AudioManager : MonoBehaviour
         volumeBar = PlayerPrefs.GetFloat("volumebar", 1f);
         mainVolumeBar.value = volumeBar;
         mainAudio.volume = mainVolumeBar.value;
+        dieAudio.volume = mainVolumeBar.value;
     }
 
     public void PlayerDie()

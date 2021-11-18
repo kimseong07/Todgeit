@@ -1,6 +1,7 @@
 ScriptsOnlyBuild:
   usedScripts:
     Assembly-CSharp.dll:
+    - AudioManager
     - BarPattern
     - CirclePattern
     - ColorManager
@@ -16,7 +17,6 @@ ScriptsOnlyBuild:
     - UnityEditor.U2D.Animation.BoneGizmo
     Unity.2D.IK.Editor.dll:
     - UnityEditor.U2D.IK.IKEditorManager
-    - UnityEditor.U2D.IK.IKGizmos
     Unity.2D.IK.Runtime.dll:
     - UnityEditor.U2D.IK.IKEditorManagerHelper
     Unity.2D.Tilemap.Editor.dll:
@@ -105,6 +105,7 @@ ScriptsOnlyBuild:
     - UnityEngine.UI.Mask
     - UnityEngine.UI.ScrollRect
     - UnityEngine.UI.Scrollbar
+    - UnityEngine.UI.Slider
     - UnityEngine.UI.Text
     - UnityEngine.UI.Toggle
     - UnityEngine.UI.VerticalLayoutGroup
@@ -133,6 +134,10 @@ ScriptsOnlyBuild:
     - Class: 72
       Script: {instanceID: 0}
     - Class: 81
+      Script: {instanceID: 0}
+    - Class: 82
+      Script: {instanceID: 0}
+    - Class: 83
       Script: {instanceID: 0}
     - Class: 102
       Script: {instanceID: 0}
@@ -195,6 +200,8 @@ ScriptsOnlyBuild:
     - Class: 114
       Script: {instanceID: 5128}
     - Class: 114
+      Script: {instanceID: 5162}
+    - Class: 114
       Script: {instanceID: 5172}
     - Class: 114
       Script: {instanceID: 5178}
@@ -255,7 +262,9 @@ ScriptsOnlyBuild:
     - Class: 114
       Script: {instanceID: 7904}
     - Class: 114
-      Script: {instanceID: 8122}
+      Script: {instanceID: 8058}
+    - Class: 114
+      Script: {instanceID: 8124}
     - Class: 115
       Script: {instanceID: 0}
     - Class: 128
@@ -313,7 +322,7 @@ ScriptsOnlyBuild:
     className: DebugUIHandlerVector2
   - hash:
       serializedVersion: 2
-      Hash: 294f0570a7b3e309d6f40b47402fa065
+      Hash: e861d1ea3d2d0076a3c856aca122fe2e
     assemblyName: Assembly-CSharp.dll
     namespaceName: 
     className: GamaManager
@@ -487,7 +496,7 @@ ScriptsOnlyBuild:
     className: TimelineAsset
   - hash:
       serializedVersion: 2
-      Hash: fe9c2870e36e9cc9b320faaf39679970
+      Hash: 0d29583a469d464cd61964186b535290
     assemblyName: Assembly-CSharp.dll
     namespaceName: 
     className: UIManager
@@ -1039,7 +1048,7 @@ ScriptsOnlyBuild:
     className: LiftGammaGain
   - hash:
       serializedVersion: 2
-      Hash: 80f7ac0a81dca331eb87537a359bcbd1
+      Hash: 04d387e0588b579a79742df073bada92
     assemblyName: Assembly-CSharp.dll
     namespaceName: 
     className: ColorManager
@@ -1327,7 +1336,7 @@ ScriptsOnlyBuild:
     className: ForwardRendererData
   - hash:
       serializedVersion: 2
-      Hash: 60b17b221ee3c0b3ed2e323299cf0dbf
+      Hash: 91ac05bca83449440aa47b992a93dba7
     assemblyName: Assembly-CSharp.dll
     namespaceName: 
     className: PlayerMove
@@ -1355,6 +1364,12 @@ ScriptsOnlyBuild:
     assemblyName: Unity.Timeline.dll
     namespaceName: UnityEngine.Timeline
     className: SignalEmitter
+  - hash:
+      serializedVersion: 2
+      Hash: 364ce5999428f8c9f4c6093815059383
+    assemblyName: Assembly-CSharp.dll
+    namespaceName: 
+    className: AudioManager
   - hash:
       serializedVersion: 2
       Hash: abf1930d8126d0b2e00e9449129a0190
