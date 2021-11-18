@@ -26,10 +26,10 @@ public class ObjectManager : MonoBehaviour
         }
         instance = this;
 
-        enemyCircle = new GameObject[40];
-        enemySquare = new GameObject[30];
-        enemyBar = new GameObject[5];
-        enemyRealBar = new GameObject[5];
+        enemyCircle = new GameObject[12];
+        enemySquare = new GameObject[4];
+        enemyBar = new GameObject[3];
+        enemyRealBar = new GameObject[3];
 
         Generate();
     }

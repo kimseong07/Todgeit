@@ -25,8 +25,15 @@ public class UIManager : MonoBehaviour
 
     public CanvasGroup audioPanel;
 
+    public CanvasGroup rankPanel;
+
+    public Image option;
+    public Image trophy;
+    public Image outImg;
+
     public bool onPaues;
 
+    bool onPanel = false;
     void Awake()
     {
         if (instance != null)
@@ -49,6 +56,8 @@ public class UIManager : MonoBehaviour
         Pause();
         BtnCollection();
     }
+
+
 
     public void GameOver()
     {
@@ -80,14 +89,18 @@ public class UIManager : MonoBehaviour
             Time.timeScale = 0f;
             GamaManager.instance.resDelay = 600f;
 
+            TrueImageRay();
+
             ObjectManager.instance.ResetEnemy();
         }
-        else if(Input.GetKeyDown(KeyCode.Escape) && onPaues)
+        else if(Input.GetKeyDown(KeyCode.Escape) && onPaues && !onPanel)
         {
             FalsePanel(gamePausePanel);
             onPaues = false;
-
             Time.timeScale = 1f;
+
+            FalseImageRay();
+
             GamaManager.instance.resDelay = 0f;
         }
     }
@@ -104,12 +117,29 @@ public class UIManager : MonoBehaviour
         {
             Debug.Log("¼³Á¤");
             TruePanel(audioPanel);
+            onPanel = true;
         });
 
         trophyBtn.onClick.AddListener(() =>
         {
             Debug.Log("´Ï¾ó±¼");
+            TruePanel(rankPanel);
+            onPanel = true;
         });
+    }
+
+    public void TrueImageRay()
+    {
+        option.raycastTarget = true;
+        trophy.raycastTarget = true;
+        outImg.raycastTarget = true;
+    }
+
+    public void FalseImageRay()
+    {
+        option.raycastTarget = false;
+        trophy.raycastTarget = false;
+        outImg.raycastTarget = false;
     }
 
     public void TruePanel(CanvasGroup canvG)
@@ -124,5 +154,7 @@ public class UIManager : MonoBehaviour
         canvG.alpha = 0;
         canvG.interactable = false;
         canvG.blocksRaycasts = false;
+
+        onPanel = false;
     }
 }
