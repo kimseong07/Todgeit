@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class BarPattern : MonoBehaviour
 {
@@ -20,7 +21,7 @@ public class BarPattern : MonoBehaviour
     private ObjectManager objectManager;
     private GameManager gameManager;
 
-    public TextMesh textCount;
+    public Text textCount;
 
     public float realBarCount;
     void Start()
@@ -33,11 +34,13 @@ public class BarPattern : MonoBehaviour
 
         ws = new WaitForSeconds(lifeTime);
 
+
+        textCount = GameObject.Find("CountDown").GetComponent<Text>();
+
     }
 
     void Update()
     {
-
         if (curtime < time)
         {
             curtime += Time.deltaTime;
@@ -46,6 +49,8 @@ public class BarPattern : MonoBehaviour
 
         countdown -= Time.deltaTime;
 
+        textCount.transform.position = this.transform.position;
+
         textCount.text = Mathf.Ceil(countdown).ToString();
 
         SetTargetPos(playerShadow.transform.position);
@@ -53,7 +58,7 @@ public class BarPattern : MonoBehaviour
 
         StartCoroutine(SetActiveFalse());
 
-        if(GamaManager.instance.gameOver)
+        if (GamaManager.instance.gameOver)
         {
             this.gameObject.SetActive(false);
         }
@@ -83,9 +88,11 @@ public class BarPattern : MonoBehaviour
 
     IEnumerator SetActiveFalse()
     {
+        textCount.color = new Color(0.5f, 0.5f, 0.5f, 1);
         yield return ws;
         countdown = 1.5f;
         SpawnBarEnemy();
+        textCount.color = new Color(0.5f,0.5f,0.5f,0);
         this.gameObject.SetActive(false);
     }
 }

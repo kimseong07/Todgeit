@@ -10,22 +10,22 @@ public class Tutorial : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        
-    }
-
-    // Update is called once per frame
-    void Update()
-    {
         start.onClick.AddListener(() =>
         {
             SceneManager.LoadScene("MainScene");
         });
     }
-
     public void TruePanel(CanvasGroup canvG)
     {
         canvG.alpha = 1;
         canvG.interactable = true;
         canvG.blocksRaycasts = true;
+    }
+
+    public void Back(CanvasGroup canvG)
+    {
+        canvG.alpha = 0;
+        canvG.interactable = false;
+        canvG.blocksRaycasts = false;
     }
 }

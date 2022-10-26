@@ -33,7 +33,7 @@ public class GameManager : MonoBehaviour
     public float createTime = 5.0f;
     public int maxScoreObj = 1;
     public int scoreCount = 0;
-    private float maxScoreY = 4.8f;
+    private float maxScoreY = 4f;
     private WaitForSeconds wsSpawn;
 
     public List<ScoreScript> scoreList = new List<ScoreScript>();
@@ -93,11 +93,7 @@ public class GameManager : MonoBehaviour
 
     public GameObject CreateScore()
     {
-        return Instantiate(scorePrefab,
-           transform.position,
-           Quaternion.identity,
-           transform
-           );
+        return Instantiate(scorePrefab, transform.position, Quaternion.identity, transform);
     }
     /*
     public void ResetCircle()
@@ -319,7 +315,7 @@ public class GameManager : MonoBehaviour
             squareTime = squareTime - Time.deltaTime;
         }
 
-        if (randPatTime >= 0 && gamaManager.score >= 1)
+        if (randPatTime >= 0 && gamaManager.score >= 3)
         {
             randPatTime = randPatTime - Time.deltaTime;
         }

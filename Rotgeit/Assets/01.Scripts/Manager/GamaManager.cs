@@ -23,6 +23,8 @@ public class GamaManager : MonoBehaviour
     public float curResDelay;
     public float resDelay;
 
+    private Text textCount;
+
     void Awake()
     {
         if (instance != null)
@@ -41,6 +43,11 @@ public class GamaManager : MonoBehaviour
         restartGame = false;
 
         backGround.transform.localScale = new Vector3((Camera.main.orthographicSize * 2) / Screen.height * Screen.width, Camera.main.orthographicSize * 2);
+
+        //WebsocketClient.GetInstance().getStart();
+        //WebsocketClient.GetInstance().getSend();
+
+        textCount = GameObject.Find("CountDown").GetComponent<Text>();
     }
 
     private void FixedUpdate()
@@ -67,6 +74,8 @@ public class GamaManager : MonoBehaviour
                     restartGame = true;
                     resDelay = curResDelay;
                 }
+
+                textCount.color = new Color(0.5f, 0.5f, 0.5f, 0);
             }
 
             if (!gameOver)

@@ -8,7 +8,6 @@ public class PlayerMove : MonoBehaviour
 
     Rigidbody2D rigid;
     public float jumpPower = 1f;
-    public int jumpCount = 0;
 
     public float forcePower = 10f;
 
@@ -98,8 +97,6 @@ public class PlayerMove : MonoBehaviour
 
         Vector3 jumpVelo = new Vector3(0, jumpPower);
         rigid.AddForce(jumpVelo, ForceMode2D.Impulse);
-
-        jumpCount++;
     }
 
     void Move()
